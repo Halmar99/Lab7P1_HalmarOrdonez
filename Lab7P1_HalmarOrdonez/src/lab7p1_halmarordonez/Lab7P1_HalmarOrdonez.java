@@ -105,6 +105,8 @@ public class Lab7P1_HalmarOrdonez {
                     int[][] matriz = rngfill(fila, colu);
                     imprimirint(matriz);
                     
+                    encontrarPuntosSilla(matriz,fila,colu);
+                    
                     
                     
                 }
@@ -202,8 +204,46 @@ public class Lab7P1_HalmarOrdonez {
         return temp;
     }//FIN PUNTOS SILLA
     
-    public static int menor(int[][]matriz,int colu){
-
+    public static void encontrarPuntosSilla(int[][]matriz,int fila,int colu){
+        
+        for(int i=0;i<fila;i++){
+            for(int j=0;j<colu;j++){
+                if(min(matriz,i,j)==true && max(matriz,i,j)==true){
+                    System.out.println("Punto de silla en Matriz["+i+"]["+j+"]"+matriz[i][j]);
+                }
+            }
+        }
+        
+    }
+    
+    public static boolean min(int[][]matriz,int fila, int colu){
+        boolean temp=false;
+        for(int i=0;i<colu;i++){
+            for(int j=0;j<fila;j++){
+                if(matriz[fila][colu]<matriz[fila][i]){
+                    temp=true;
+                    return temp;
+                }
+                else{
+                    temp=false;
+                }
+            }
+        }
+        return temp;    
+    }//FIN MIN
+    
+    public static boolean max(int[][]matriz,int fila,int colu){
+        boolean temp=false;
+        for(int i=0;i<fila;i++){
+            for(int j=0;j<colu;j++){
+                if(matriz[fila][colu]>matriz[i][colu]){
+                    temp=true;
+                    return temp;
+                }
+                else temp=false;
+            }
+        }
+        return temp;
     }
 
     public static void imprimirint(int[][] matriz) {
